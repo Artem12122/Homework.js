@@ -36,16 +36,16 @@ alert(`${dollar.toFixed(2)} долларов вы получите.`);
 // Number: RGB
 
 
-const red = (Number(prompt("Введите значение red в десятичной системе от 16 до 255: "))).toString(16);
-const green = (Number(prompt("Введите значение green в десятичной системе от 16 до 255: "))).toString(16);
-const blue = (Number(prompt("Введите значение blue в десятичной системе от 16 до 255: "))).toString(16);
+const red = (Number(prompt("Введите значение red в десятичной системе до 255: "))).toString(16);
+const green = (Number(prompt("Введите значение green в десятичной системе до 255: "))).toString(16);
+const blue = (Number(prompt("Введите значение blue в десятичной системе до 255: "))).toString(16);
 
 // 2 вариант задачи переменных.
 // const red = (+prompt("Введите значение red в десятичной системе от 16 до 255: ")).toString(16);
 // const green = (+prompt("Введите значение green в десятичной системе от 16 до 255: ")).toString(16);
 // const blue = (+prompt("Введите значение blue в десятичной системе от 16 до 255: ")).toString(16);
 
-var cssColorHex = "#" + red + green + blue;
+var cssColorHex = "#" + red.padStart(2, 0) + green.padStart(2, 0) + blue.padStart(2, 0);
 alert(`Ваш цвет в формате Hex ${cssColorHex}.`);
 
 
