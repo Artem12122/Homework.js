@@ -107,10 +107,21 @@
 
 // String: youtube
 
-// пока не понял как сделать 
 
-// {
-//     const youtubeLInk = /(http(?:s?):\/\/(?:www\.)?youtu(?:be\.com\/watch\?v=|\.be\/)([\w\-\_]*)(&(amp;)?‌​[\w\?‌​=]*)?)/;
-//     const link = prompt("Вставте ссылку на ваше видео из youtube")
-//     console.log(link.match(youtubeLInk))
-// }
+{
+    const link = prompt("Вставте ссылку на ваше видео из youtube")
+    const youtubeLInk = /(?:https?:\/\/)?(?:www\.)?youtu\.?be(?:\.com)?\/?.*(?:watch|embed)?(?:.*v=|v\/|\/)([\w\-_]+)\&?/;
+    const youtubeIndetif =link.match(youtubeLInk);
+
+    console.log(youtubeIndetif);
+
+    document.write(`
+       <div class="video">
+            <iframe 
+                id="ytplayer" type="text/html"
+                width="720" height="405"
+                src="https://www.youtube.com/embed/${youtubeIndetif[1]}?autoplay=1"
+                frameborder="0" allowfullscreen>
+        </div>
+    `);
+}
