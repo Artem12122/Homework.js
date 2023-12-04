@@ -10,18 +10,14 @@ console.log(startTask)
 
 if ( startTask === "numberodd" ) {
     let userNumber = +prompt("Введите любое число");
-    let doubles = userNumber % 2;
 
     if (!isNaN(userNumber) ){
-        if(doubles === 0){
-            alert("Ваше число четное")            
-        }
-        else {
-            alert("Ваше число не четное")            
-        }
+        let doubles = userNumber % 2 === 0;
+
+        alert( doubles ? "Ваше число четное" : "Ваше число не четное")
     }
     else {
-        alert("Вы ввели не чило(не только числа)")
+        alert("Вы ввели не чило (не только числа)")
     }
 
 }
@@ -45,6 +41,10 @@ if ( startTask === "boolean" ) {
     let age = confirm("Вам больше 18 лет?")
     let gender = confirm("Вы мужчина")
     let familyStatus = confirm("Вы состоите в браке?")
+
+    console.log(age ? "Вы совершеннолетний" : "Вы не совершеннолетний");
+    console.log("Ваш пол:", gender ? "мужской" : "женский");
+    console.log("Ваше семейное положение:", familyStatus ? (gender ? "женат" : "за мужем") : (gender ? "не женат" : "не за мужем"));
 }
 
 
@@ -258,16 +258,16 @@ if ( startTask === "currencyexchange" ){
     let rate
 
     if ( userCurrency === "USD" ) {
-        change === true ? rate = 37.7 : rate = 37.25
-        change === true ? userMoney = userMoney / rate : userMoney = userMoney * rate  // Покупаем в гривнах, продаем в валюту
+        change ? rate = 37.7 : rate = 37.25
+        userMoney = change ? userMoney / rate : userMoney * rate  // Покупаем в гривнах, продаем в валюту
     }
     if ( userCurrency === "EUR" ) {
-        change === true ? rate = 41.1 : rate = 40.55
-        change === true ? userMoney = userMoney / rate : userMoney = userMoney * rate  // Покупаем в гривнах, продаем в валюту
+        change ? rate = 41.1 : rate = 40.55
+        userMoney = change ? userMoney / rate : userMoney * rate  // Покупаем в гривнах, продаем в валюту
     }
     if ( userCurrency === "PLN" ) {
-        change === true ? rate = 9.39 : rate = 9.07
-        change === true ? userMoney = userMoney / rate : userMoney = userMoney * rate  // Покупаем в гривнах, продаем в валюту
+        change ? rate = 9.39 : rate = 9.07
+        userMoney = change ? userMoney / rate : userMoney * rate  // Покупаем в гривнах, продаем в валюту
     }
 
     alert(`Ваша сумма после транзакции составит ${userMoney.toFixed(2)}`)
