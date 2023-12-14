@@ -7,7 +7,7 @@
         model: "oktavia",
         engine: "1.8TSI",
         transmission: "mechanical",
-        year: "2009",
+        year: 2009,
         color: "beige",
         fuel: "petrol"
     }
@@ -16,7 +16,7 @@
         model: "iphone",
         camera: "12mp",
         accumulator: "3000mAh",
-        displayDiagonal: "6.1",
+        displayDiagonal: 6.1,
         os: "IOS",
         protectionClass: "IP68"
     }
@@ -533,5 +533,128 @@
 
 
 {
-    
+    fetch('https://open.er-api.com/v6/latest/USD').then(res => res.json())
+    .then(data => {
+
+        let str = "<table><tr><th></th>"
+        let rates = Object.keys(data.rates)
+
+        for (const currency of rates){
+            str += `<th>${currency}</th>`
+        }
+        
+        str += "</tr>"
+
+        for (const currency of rates){
+            str += `<tr><th>${currency}</th>`
+
+            for (const toCurrency of rates) {
+                const crossRates = data.rates.USD / data.rates[currency] * data.rates[toCurrency];
+                str += `<td>${crossRates.toFixed(2)}</td>`
+
+            }
+            str += "</tr>"
+        }
+
+        str += "</table>"
+
+
+        document.write(str)
+        console.log(data, rates)
+    })
+}
+
+
+// Form
+
+
+{
+    const car = {
+        brand: "skoda",
+        model: "oktavia",
+        engine: "1.8TSI",
+        transmission: "mechanical",
+        year: 2009,
+        color: "beige",
+        fuel: "petrol",
+        inProduction: false
+    }
+
+    let str = "<form>"
+
+    for (const label in car) {
+        let type = typeof(car[label]) 
+        type === "string" ? type = "text" : (type === "boolean" ? type = "checkbox" : type = "number" )
+
+        let value = `value=${car[label]}`
+
+        if (type === "checkbox") {
+            (value = car[label]) === true ? value = 'checked' : value = ""
+        } else {
+            value
+        }
+
+        str += `<label>${label}: <input type=${type} ${value} />`
+        str += "</label></br>"
+    }
+
+    str += "</form>"
+
+    document.write(str)
+}
+
+
+// Table
+
+
+{
+    const persons = [
+        {
+            name: 'Марія',
+            fatherName: 'Іванівна',
+            surname: 'Іванова',
+            sex: 'female'
+        },
+        {
+            name: 'Миколай',
+            fatherName: 'Іванович',
+            surname: 'Іванов',
+            age: 15
+        },
+        {
+            name: 'Петро',
+            fatherName: 'Іванович',
+            surname: 'Іванов',
+            married: true
+        },
+    ]
+
+    let str =  "<table><tr>"
+    let columns = []
+
+    for (const column of persons) {
+        for (const key in column) {
+            if (!columns.includes(key)) {
+                columns.push(key)
+            }
+        }
+    }
+
+    for (const column of columns) {
+        str += `<th>${column}</th>`
+    }
+    str += "</tr>"
+
+    for (const rows of persons){
+        str += "<tr>"
+        for (const column of columns) {
+            let tableData = rows[column] !== undefined ? rows[column] : ''
+            str += `<td>${tableData}</td>`
+        }
+        str += "</tr>"
+    }
+
+    str += "</table>"
+
+    document.write(str)
 }

@@ -434,7 +434,7 @@
         i++
         console.log(arrChild)
         for (const arrOne of arrChild){
-            str += "<th>" + arrOne + "</th>"
+            str += "<td>" + arrOne + "</td>"
             console.log(arrOne)
         }
         str += "</tr>"
