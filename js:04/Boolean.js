@@ -150,7 +150,7 @@ if ( startTask === "promptor" ) {
     let years = prompt("Сколько вам лет?") || alert("Вы некоректно ввели возраст");
     let birthYears = 2023 - years ;
 
-    // birthYears < 2023 && !alert(`Ваш год родения  ${birthYears}`) || alert("Вы некоректно ввели возраст")
+    birthYears < 2023 && !alert(`Ваш год родения  ${birthYears}`) || alert("Вы некоректно ввели возраст")
 }
 
 

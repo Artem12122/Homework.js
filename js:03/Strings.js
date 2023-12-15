@@ -99,7 +99,7 @@
 
 {
     let str = prompt("Напишите рассаз на тему как я провел лето.\nДля перехода на новый рядок используйте \"\\n\"");
-    let result = (str.split("\\")).join("\n");
+    let result = (str.split(" \\n ")).join("\n");
     alert(result);
     console.log(result)
 }
