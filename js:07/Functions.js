@@ -2,8 +2,8 @@
 
 
 {
-    const temperatureFahrenheit = ( c ) => ( c * 9 / 5 ) + 32 ; // Из цельсия в фаренгейты
-    const temperatureCelsius = ( f ) => 5/9 * ( f - 32 ) ; // Из фаренгейта в цельсий
+    const temperatureFahrenheit = c => ( c * 9 / 5 ) + 32 ; // Из цельсия в фаренгейты
+    const temperatureCelsius = f => 5/9 * ( f - 32 ) ; // Из фаренгейта в цельсий
 }
 
 
@@ -61,10 +61,7 @@
 
 
 {
-    const firstBig = (text) => { 
-        text = text.slice(0, 1).toUpperCase() + text.slice(1, ).toLowerCase()
-        return text
-    }
+    const firstBig = text => text.slice(0, 1).toUpperCase() + text.slice(1, ).toLowerCase()
 
     const fullNameObj = () => {
         let name = firstBig(prompt("Напишите ваше имя."));
@@ -88,13 +85,12 @@
 
 
 {
-    let str = prompt("Напишите рассаз на тему как я провел лето.\nДля перехода на новый рядок используйте \"\\n\"");
-    const newLine = (str) => {
-        let result = (str.split(" \\n ")).join("\n");
-        return result
-    }
+    const newLine = str => str.split(" \\n ").join("\n");
 
-    let fixStr = newLine(str)
+    // let str = prompt("Напишите рассаз на тему как я провел лето.\nДля перехода на новый рядок используйте \"\\n\"");
+    // let fixStr = newLine(str)
+    
+    let fixStr = newLine(prompt("Напишите рассаз на тему как я провел лето.\nДля перехода на новый рядок используйте \"\\n\""))
     console.log(fixStr)
 }
 
@@ -102,16 +98,16 @@
 // Prompt OR
 
 
-{
-    const promptOr = () => {
+// {
+//     const promptOr = () => {
 
-    }
+//     }
 
 
-    {
-        let years = prompt("Сколько вам лет?") || alert("Вы некоректно ввели возраст");
-        let birthYears = 2023 - years ;
+//     {
+//         let years = prompt("Сколько вам лет?") || alert("Вы некоректно ввели возраст");
+//         let birthYears = 2023 - years ;
     
-        birthYears < 2023 && !alert(`Ваш год родения  ${birthYears}`) || alert("Вы некоректно ввели возраст")
-    }
-}
+//         birthYears < 2023 && !alert(`Ваш год родения  ${birthYears}`) || alert("Вы некоректно ввели возраст")
+//     }
+// }
