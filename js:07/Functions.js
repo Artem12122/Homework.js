@@ -98,16 +98,90 @@
 // Prompt OR
 
 
-// {
-//     const promptOr = () => {
-
-//     }
-
-
-//     {
-//         let years = prompt("Сколько вам лет?") || alert("Вы некоректно ввели возраст");
-//         let birthYears = 2023 - years ;
+{
+    const promptOr = (defaultYears) => prompt("Сколько вам лет?") || defaultYears
     
-//         birthYears < 2023 && !alert(`Ваш год родения  ${birthYears}`) || alert("Вы некоректно ввели возраст")
-//     }
-// }
+    let years = promptOr(0) // Задаем возраст по умолчанию
+    let birthYears = 2023 - years ;
+
+    alert(`Ваш год родения  ${birthYears}`)
+}
+
+
+//Login And Password
+
+
+{
+    const loginandpassword = (rightLogin, rightPassword) => {
+        let login = prompt("Введите логин");
+    
+        if ( login === rightLogin ) {
+            let password = prompt("Введите пароль");
+
+            return password === rightPassword;
+        } else {
+            return false;
+        }
+    }
+
+    const enterSite = loginandpassword("admin", "qwerty")
+
+    console.log(enterSite)
+}
+
+
+// For Table
+
+
+{
+    const forTable = (arraysArrays) => {
+        let i = 1
+        let str = "<table>"
+    
+        for (const arrChild of arraysArrays){
+            if ( i % 2 ){
+                str += "<tr style= \"color: blue\">";
+            }
+            else {
+            str += "<tr style= \"color: green\">";
+            }
+            i++
+            for (const arrOne of arrChild){
+                str += "<td>" + arrOne + "</td>"
+            }
+            str += "</tr>"
+        }
+    
+        str += "</table>"
+
+        return str
+    }
+
+    const arr = [
+        [ 0, 0, 0, 0, 0 ],
+        [ 0, 1, 2, 3, 4 ],
+        [ 0, 2, 4, 6 , 8 ],
+        [ 0, 3, 6, 9, 12 ],
+        [ 0, 4, 8, 12, 16 ]
+    ];
+
+    document.write(forTable(arr))
+    console.log(forTable(arr))
+}
+
+
+// Filter Lexics
+
+
+{
+    const filterLexics = (userText, exceptions) => {
+        let = rightText = userText.split(" ").filter( x => !exceptions.includes(x) ).join(" ").trim();
+        return rightText
+    }
+    
+    const exceptions = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "блин", "оладь", "сука", " "];
+    const userText = prompt("напишите ваш рассказ");
+    
+    console.log(filterLexics(userText, exceptions))
+    console.log(userText)
+}

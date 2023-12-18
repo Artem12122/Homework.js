@@ -432,10 +432,10 @@
         str += "<tr style= \"color: green\">";
         }
         i++
-        console.log(arrChild)
+        // console.log(arrChild)
         for (const arrOne of arrChild){
             str += "<td>" + arrOne + "</td>"
-            console.log(arrOne)
+            // console.log(arrOne)
         }
         str += "</tr>"
     }
@@ -467,7 +467,7 @@
 
 
 {
-    const userName = prompt("Введите ваши Ф. И. О").trim().split(" ")
+    const userName = prompt("Введите ваши Ф.И.О").trim().split(" ")
 
     const capitalize = str => {
         let result = str.slice(0, 1).toUpperCase() + str.slice(1, ).toLowerCase();
@@ -500,8 +500,8 @@
 
 {
     const exceptions = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "блин", "оладь", "сука"];
-    const userText = prompt("напишите ваш рассказ").trim().split(" ");
-    const rightText = userText.map( x => (exceptions.includes(x) ) ? "BEEP" : x ).join(" ")
+    const userText = prompt("напишите ваш рассказ").split(" ");
+    const rightText = userText.map( x => (exceptions.includes(x) ) ? "BEEP" : x ).join(" ").trim()
 
     console.log(rightText)
     // console.log(userText)
