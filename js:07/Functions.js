@@ -100,11 +100,18 @@
 
 {
     const promptOr = (defaultYears) => prompt("Сколько вам лет?") || defaultYears
-    
     let years = promptOr(0) // Задаем возраст по умолчанию
+
+
+    // const promptOr = () => prompt("Сколько вам лет?") || 0 // Задаем возраст по умолчанию
+    // let years = promptOr() 
+
+    // const promptOr = (year = prompt("Сколько вам лет?") || 0) => 2023 - year
+
     let birthYears = 2023 - years ;
 
     alert(`Ваш год родения  ${birthYears}`)
+    // alert(`Ваш год родения  ${promptOr()}`)
 }
 
 
@@ -133,41 +140,39 @@
 // For Table
 
 
-{
-    const forTable = (arraysArrays) => {
-        let i = 1
-        let str = "<table>"
-    
-        for (const arrChild of arraysArrays){
-            if ( i % 2 ){
-                str += "<tr style= \"color: blue\">";
-            }
-            else {
-            str += "<tr style= \"color: green\">";
-            }
-            i++
-            for (const arrOne of arrChild){
-                str += "<td>" + arrOne + "</td>"
-            }
-            str += "</tr>"
-        }
-    
-        str += "</table>"
+const forTable = (arraysArrays) => {
+    let i = 1
+    let str = "<table>"
 
-        return str
+    for (const arrChild of arraysArrays){
+        if ( i % 2 ){
+            str += "<tr style= \"color: blue\">";
+        }
+        else {
+        str += "<tr style= \"color: green\">";
+        }
+        i++
+        for (const arrOne of arrChild){
+            str += "<td>" + arrOne + "</td>"
+        }
+        str += "</tr>"
     }
 
-    const arr = [
-        [ 0, 0, 0, 0, 0 ],
-        [ 0, 1, 2, 3, 4 ],
-        [ 0, 2, 4, 6 , 8 ],
-        [ 0, 3, 6, 9, 12 ],
-        [ 0, 4, 8, 12, 16 ]
-    ];
+    str += "</table>"
 
-    document.write(forTable(arr))
-    console.log(forTable(arr))
+    return str
 }
+
+const arr = [
+    [ 0, 0, 0, 0, 0 ],
+    [ 0, 1, 2, 3, 4 ],
+    [ 0, 2, 4, 6 , 8 ],
+    [ 0, 3, 6, 9, 12 ],
+    [ 0, 4, 8, 12, 16 ]
+];
+
+document.write(forTable(arr))
+console.log(forTable(arr))
 
 
 // Filter Lexics
@@ -184,4 +189,121 @@
     
     console.log(filterLexics(userText, exceptions))
     console.log(userText)
+}
+
+
+// Currency Table
+
+
+fetch('https://open.er-api.com/v6/latest/USD').then(res => res.json())
+.then(data => {
+
+    const currencyTable = () => {
+        let str = []
+        let rates = Object.keys(data.rates)
+
+
+        let str1 = ["", ...rates]
+        str.push(str1)
+
+        for (const currency of rates){
+            let arr = [currency]
+
+            for (const toCurrency of rates) {
+                const crossRates = data.rates[currency] / data.rates[toCurrency];
+                arr.push(crossRates.toFixed(2))
+            }
+            str.push(arr)
+        }
+        return str
+    }
+
+    document.write(forTable(currencyTable()))
+})
+
+
+// Form 
+
+
+{
+    const form = (obj) => {
+        let str = "<form>"
+
+        for (const label in obj) {
+            let type = typeof(car[label]) 
+            type === "string" ? type = "text" : (type === "boolean" ? type = "checkbox" : type = "number" )
+
+            let value = `value=${obj[label]}`
+
+            if (type === "checkbox") {
+                (value = obj[label]) === true ? value = 'checked' : value = ""
+            } else {
+                value
+            }
+
+            str += `<label>${label}: <input type=${type} ${value} />`
+            str += "</label></br>"
+        }
+
+        str += "</form>"
+        document.write(str)
+    }
+
+    const car = {
+        "Name":"chevrolet chevelle malibu",
+        "Cylinders":8,
+        "Displacement":307,
+        "Horsepower":130,
+        "Weight_in_lbs":3504,
+        "Origin":"USA",
+        "in_production": false
+    }
+
+    form(car)
+}
+
+
+// Array of objects sort
+
+
+{
+    const sort = (arr, key, boolean = true) => {
+
+        // var personSort = arr.slice().sort((a, b) => (boolean ? a[key] > b[key] : b[key] > a[key]) ? 1 : -1);
+        // return personSort
+
+        return arr.slice().sort((a, b) => (boolean ? a[key] > b[key] : b[key] > a[key]) ? 1 : -1);    
+    }
+
+    var persons = [
+        {name: "Іван", age: 17},
+        {name: "Марія", age: 35},
+        {name: "Олексій", age: 73},
+        {name: "Яків", age: 12},
+    ]
+    
+    sort(persons, "age"); //сортує за віком за зростанням
+    sort(persons, "name", false); //сортує на ім'я за спаданням
+
+    console.log(sort(persons, "age"))
+    console.log(sort(persons, "age", false))
+
+    console.log(sort(persons, "name", false))
+    console.log(sort(persons, "name"))
+}
+
+
+// Table
+
+
+{
+
+}
+
+
+// Divide
+
+
+{
+
 }

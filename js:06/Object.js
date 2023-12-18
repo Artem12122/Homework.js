@@ -549,7 +549,7 @@
             str += `<tr><th>${currency}</th>`
 
             for (const toCurrency of rates) {
-                const crossRates = data.rates.USD / data.rates[currency] * data.rates[toCurrency];
+                const crossRates = data.rates[currency] / data.rates[toCurrency];
                 str += `<td>${crossRates.toFixed(2)}</td>`
 
             }
