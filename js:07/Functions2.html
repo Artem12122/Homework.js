@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>Введите расход вашего автомобиля</p>
+    <input type='number' id="fuelExpense" /> л. /100 км.</br>
+    <p>Введите сколько киллометров вы проезжаете за день?</p>
+    <input type='number' id="dailyTrip" /> км.
+    <div id="divisionResult" style="margin-top: 20px;">
+        Введите данные для подсчета.
+    </div>
+    <script>
+        const carCalk = () => {
+            const fluePrice = 50
+            const changeOil = 10000
+            const fuelExpenseCar = fuelExpense.value / 100
+            const dailyTripValue = +dailyTrip.value
+
+            let monthlyExpenses = Math.ceil(dailyTripValue * 30 * fuelExpenseCar * fluePrice);
+            
+            let changeOilDay =  Math.floor((changeOil / dailyTripValue) % 30)
+            let changeOilMonth =  Math.floor(((changeOil / dailyTripValue) - changeOilDay) / 30)
+
+            const carСonsumption = {
+                monthlyExpensesCar: monthlyExpenses,
+                changeOilCarMonth: changeOilMonth,
+                changeOilCarDay: changeOilDay
+            }
+
+            if ( dailyTripValue !== 0 && !isNaN(fuelExpenseCar)){
+                divisionResult.innerHTML = "Ваши расходы на топливо в месяц составят " + carСonsumption.monthlyExpensesCar + " грн. </br>" + `Замена масла через ${carСonsumption.changeOilCarMonth} месяцев и ${carСonsumption.changeOilCarDay} дней.`
+            } else {
+                divisionResult.innerHTML = "Введите данные для подсчета."
+            }
+            
+            return carСonsumption
+        }
+
+        fuelExpense.oninput = dailyTrip.oninput = carCalk
+
+    </script>
+</body>
+</html>

@@ -266,21 +266,28 @@ fetch('https://open.er-api.com/v6/latest/USD').then(res => res.json())
 // Array of objects sort
 
 
+const sort = (arr, key, boolean = true) => arr.slice().sort((a, b) => {
+    let valA = a[key] !== undefined ? a[key] : null
+    let valB = b[key] !== undefined ? b[key] : null
+    
+    if (valA === null) return (boolean ? 1 : -1 )
+    if (valB === null) return (boolean ? -1 : 1 )
+    
+    return (boolean ? valA > valB : valB > valA ) ? 1 : -1
+});
+// const sort = (arr, key, boolean = true) => arr.slice().sort((a, b) => (boolean ? a[key] > b[key] : b[key] > a[key]) ? 1 : -1);
+// const sort = (arr, key, boolean = true) => arr.slice().sort((a, b) => {
+//     var personSort = arr.slice().sort((a, b) => (boolean ? a[key] > b[key] : b[key] > a[key]) ? 1 : -1);
+//     return personSort
+// });
+
 {
-    const sort = (arr, key, boolean = true) => {
-
-        // var personSort = arr.slice().sort((a, b) => (boolean ? a[key] > b[key] : b[key] > a[key]) ? 1 : -1);
-        // return personSort
-
-        return arr.slice().sort((a, b) => (boolean ? a[key] > b[key] : b[key] > a[key]) ? 1 : -1);    
-    }
-
     var persons = [
         {name: "Іван", age: 17},
         {name: "Марія", age: 35},
         {name: "Олексій", age: 73},
         {name: "Яків", age: 12},
-    ]
+    ]  
     
     sort(persons, "age"); //сортує за віком за зростанням
     sort(persons, "name", false); //сортує на ім'я за спаданням
@@ -297,13 +304,97 @@ fetch('https://open.er-api.com/v6/latest/USD').then(res => res.json())
 
 
 {
+    const table = (arr, keys, boolean) => {
+        const sortArr = sort(arr, keys, boolean);
 
+        let str =  "<table><tr>"
+        let columns = []
+    
+        for (const column of sortArr) {
+            for (const key in column) {
+                if (!columns.includes(key)) {
+                    columns.push(key)
+                }
+            }
+        }
+    
+        for (const column of columns) {
+            str += `<th>${column}</th>`
+        }
+        str += "</tr>"
+    
+        for (const rows of sortArr){
+            str += "<tr>"
+            for (const column of columns) {
+                let tableData = rows[column] !== undefined ? rows[column] : ''
+                str += `<td>${tableData}</td>`
+            }
+            str += "</tr>"
+        }
+        str += "</table>"
+    
+        document.write(str)
+        return sortArr
+    }
+
+    const persons = [
+        {
+            name: 'Марія',
+            fatherName: 'Іванівна',
+            surname: 'Іванова',
+            sex: 'female'
+        },
+        {
+            name: 'Миколай',
+            fatherName: 'Іванович',
+            surname: 'Іванов',
+            age: 15
+        },
+        {
+            name: 'Петро',
+            fatherName: 'Іванович',
+            surname: 'Іванов',
+            married: true
+        },
+    ]
+
+    console.log(table(persons, "name", false))
+    console.log(table(persons, "age"))
+    console.log(table(persons, "sex"))
+    console.log(table(persons, "married"))
+
+    console.log(table(persons, "age", false))
+    console.log(table(persons, "married", false))
 }
 
 
-// Divide
+//  Calc Func
 
 
 {
+    let fuelExpense = +prompt("Какой расход топлива вашего авто на 100 км?", 10 ) / 100 ;
+    let dailyTrip = +prompt("Сколько киллометров вы проезжаете в день?", 40 ) ;
 
+    const carCalk = (fuelExpense, dailyTrip) => {
+        const fluePrice = 50
+        const changeOil = 10000
+
+        let monthlyExpenses = Math.ceil(dailyTrip * 30 * fuelExpense * fluePrice);
+
+        let changeOilDay =  Math.floor((changeOil / dailyTrip) % 30)
+        let changeOilMonth =  Math.floor(((changeOil / dailyTrip) - changeOilDay) / 30)
+
+        return {
+            monthlyExpensesCar: monthlyExpenses,
+            changeOilCarMonth: changeOilMonth,
+            changeOilCarDay: changeOilDay
+        }
+    }
+
+    const carСonsumption = carCalk(fuelExpense, dailyTrip)
+
+
+    alert(`Затраты на топливо в месяц составят ${carСonsumption.monthlyExpensesCar} грн.\nЗамена масла через ${carСonsumption.changeOilCarMonth} месяцев и ${carСonsumption.changeOilCarDay} дней.`)
+
+    console.log(carCalk(fuelExpense, dailyTrip))
 }
