@@ -291,5 +291,66 @@
 
 
 {
+    fetch('https://raw.githubusercontent.com/russ666/all-countries-and-cities-json/master/countries.min.json').then(res => res.json())
+     .then(data => {
+            const d = document.createElement("div")
+            const dCountry = document.createElement("div")
+            const dCities = document.createElement("div")
+            const sCountrList = document.createElement("select")
+            const sCitiesList = document.createElement("select")
 
+            d.style.display = "flex"
+            d.style.flexWrap = "wrap"
+            d.style.gap = "8px"
+
+            document.body.append(d)
+
+            sCountrList.id = "countries"
+            sCitiesList.id = "cities"
+            dCountry.innerText = "Выберете вашу страну"
+            dCities.innerText = "и город"
+
+            d.append(dCountry, sCountrList, dCities, sCitiesList)
+
+            const countries = Object.keys(data)
+
+            for (const country of countries){
+                const sCountr = document.createElement("option")
+
+                sCountr.innerText = country
+
+                sCountrList.append(sCountr)
+            }
+
+            sCountrList.onchange = () => {
+                const countryVal = sCountrList.value
+                const sitiesVal = data[countryVal]
+
+                sCitiesList.innerText = ""
+            
+                for (const city of sitiesVal) {
+                    const sCity = document.createElement("option")
+
+                    sCity.innerText = city
+
+                    sCitiesList.append(sCity)
+                }
+            }
+
+            // Заполнение списка при загрузке страницы 
+
+            {
+                for (const city of data.Afghanistan) {
+                    const sCity = document.createElement("option")
+
+                    sCity.innerText = city
+
+                    sCitiesList.append(sCity)
+                }
+            }
+
+            //sCountrList.dispatchEvent(new Event('change'));
+
+            console.log(data)
+        })
 }
