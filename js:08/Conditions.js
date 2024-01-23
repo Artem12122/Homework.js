@@ -337,19 +337,7 @@
                 }
             }
 
-            // Заполнение списка при загрузке страницы 
-
-            {
-                for (const city of data.Afghanistan) {
-                    const sCity = document.createElement("option")
-
-                    sCity.innerText = city
-
-                    sCitiesList.append(sCity)
-                }
-            }
-
-            //sCountrList.dispatchEvent(new Event('change'));
+            sCountrList.onchange()
 
             console.log(data)
         })

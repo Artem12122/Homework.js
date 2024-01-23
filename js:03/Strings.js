@@ -40,7 +40,7 @@
     let composition = prompt("Напишите краткий рассказ как вы провели лето.");
     let result = (composition.split(" ")).length;
 
-    console.log(++result); // добавляем бинарный + для корректного подсчета, за крайним словом нет пробелла.
+    console.log(result);
 }
 
 
