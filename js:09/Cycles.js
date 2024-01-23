@@ -151,32 +151,26 @@
 {
     const chess = (horizontal, vertical) => {
         let result = ""
-        const h = "#"
-        const p = "."
+        let h = "#"
+        let p = "."
 
-        for (let j = 0; j < vertical; j++ ) {
+        for (let j = 0; j < vertical; j++ ) {  
+            if (j % 2 === 0 ) {
+                p = "."
+                h = "#"
+            } else {
+                p = "#"
+                h = "."
+            }
             
             for (let i = 0; i < horizontal; i++ ) {
+
                 result += i % 2 === 0 ? p : h
             }
             result += "\n"
         }
         return result
     }
-
-    // let result = ""
-    // const h = "#"
-    // const p = "."
-
-    // for (let j = 0; j < 10; j++ ) {
-            
-    //     for (let i = 0; i < 12; i++ ) {
-    //         result += i % 2 === 0 ? p : h
-    //     }
-    //     result += "\n"
-    // }
-
-    // console.log(result)
 
     console.log(chess(12,10))
 }
