@@ -103,9 +103,11 @@
 {
     function makeSaver(value) {
         let result
+        let flag = false
         return function() {
-            if (!result) {
+            if (!flag) {
                 result = value()
+                flag = true
             }
             return result
         }
@@ -144,6 +146,10 @@
                 if (arr2[i] === undefined) {
                     arr2[i] = x[j++]
                 }
+            }
+            const xLast = x.slice(j, )
+            if (xLast.length > 0) {
+                xLast.map(y => arr2.push(y))
             }
            return f.apply(zis, arr2)
         }
