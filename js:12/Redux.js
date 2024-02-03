@@ -78,14 +78,13 @@ function reducer(state, {type, what, how, money}){ //об'єкт action дест
 
 const store = createStore(reducer)
 
-const products = ['beer', 'chips', 'cigarettes', 'bread', 'milk', 'cheese', 'sausage']
+const products = Object.keys(store.getState()).filter(x => x !== "cashRegister")
 
 for (const product of products) {
     store.subscribe(() => {
         const obj = store.getState()
         document.getElementById(product + "Quantity").innerHTML = "Количество: " + obj[product].quantity + " штук"
         document.getElementById(product + "Price").innerHTML = "Цена: " + obj[product].price + " грн."
-        document.title = obj.cashRegister
     })
 
     const option = document.createElement("option")
@@ -94,6 +93,11 @@ for (const product of products) {
     option.value = product
     option.innerHTML = product
 }
+
+store.subscribe(() => {
+    const obj = store.getState()
+    document.title = obj.cashRegister
+})
 
 const buy = (what, how, money) => store.dispatch({type: 'buy', what: what, how: how, money: money})
 
