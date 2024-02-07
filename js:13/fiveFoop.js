@@ -244,10 +244,21 @@ function Password(parent, open){
         password.onChange = data => {
             this.loginDisabled(data)
         }
+
+        btn.onclick = (event) => {
+            event.preventDefault()
+            if (this.getValue && password.getValue) {
+                const login = this.getValue()
+                const p = password.getValue()
+                console.log(login, p)
+            }
+        }
     }
 
     let p = new Password(document.body, true)
     let login = new Login(document.body, p)
+
+    // let login = new Login(document.body)
 }
 
 
