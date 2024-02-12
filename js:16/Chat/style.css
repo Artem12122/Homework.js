@@ -1,0 +1,42 @@
+body {
+    background-image: url("https://thumbs.dreamstime.com/b/%D0%B2%D0%B5%D0%BA%D1%82%D0%BE%D1%80%D0%BD%D1%8B%D0%B9-%D1%88%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD-%D0%BE%D0%BD%D0%BB%D0%B0%D0%B9%D0%BD-%D1%87%D0%B0%D1%82%D0%B0-%D0%B8%D0%BD%D1%82%D0%B5%D1%80%D0%B0%D0%BA%D1%82%D0%B8%D0%B2%D0%BD%D1%8B%D0%B9-%D1%87%D0%B0%D1%82-%D0%BF%D1%80%D0%BE%D0%B7%D1%80%D0%B0%D1%87%D0%BD%D1%8B%D0%B9-%D1%84%D0%BE%D0%BD-249811076.jpg");
+    padding: 12px;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+input, button {
+    width: 100%;
+    font-size: 32px;
+    box-sizing: border-box;
+    border: 1px solid gray;
+    border-radius: 32px;
+    margin-top: 24px;
+    padding: 6px;
+    padding-left: 16px;
+    background-color: rgb(95, 95, 95);
+    color: white;
+}
+#nick {
+    color: rgb(208, 238, 99);
+}
+#message {
+    color: rgb(59, 198, 230);
+}
+input::placeholder {
+    color:  rgb(171, 171, 171);
+}
+p {
+    font-size: 18px;
+    margin: 8px;
+    padding:8px 18px 8px 10px;
+    border: 1px solid gray;
+    border-radius: 32px;
+    background-color: rgb(95, 95, 95);
+    color: rgb(59, 198, 230);
+    width: max-content;
+    max-width: 90%;
+}
+strong {
+    color: rgb(208, 238, 99);
+}
