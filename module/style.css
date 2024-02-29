@@ -127,12 +127,12 @@ a:hover {
     font-size: 16px;
     cursor: pointer;
     position: absolute;
-    top: 107px;
+    top: 32%;
     right: 12px;
 }
 
 #checkbox2 {
-    top: 172px;
+    top: 52%;
 }
 
 .formLogin>button {

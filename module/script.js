@@ -702,7 +702,7 @@ window.onhashchange = () => {
             <form class="formLogin">
                 <input id="login" type="text" placeholder="логін">
                 <input id="password" type="password" placeholder="пароль">
-                <span id="checkbox">👁️</span>
+                <span style="top: 37%" id="checkbox">👁️</span>
                 <button id="loginBtn">Вхід</button>
                 <a href="#/register">Реєстрація</a>
                 <p id = "messageLogin"></p>
