@@ -176,11 +176,15 @@ function Password(parent, open){
             }
         }
     }
-    login.oninput()
     
-    p.onChange = data =>{
-        // console.log(data)
-        login.oninput()
+    p.onChange = () =>{
+        if (p.getValue && login.value) {
+            if (login.value !== "" && p.getValue() !== ""){
+                btn.disabled = false
+            } else {
+                btn.disabled = true
+            }
+        }
     }
 }
 

@@ -800,6 +800,7 @@ window.onhashchange = () => {
                         countHtml.value = newVal
                     }
                     store.dispatch(actionCartSet(good, +countHtml.value))
+                    //priceHtml.innerHTML = "Ціна: " + price * newVal
                     window.onhashchange()
                 })
 
